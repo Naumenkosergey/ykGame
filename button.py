@@ -42,29 +42,25 @@ class Button:
         else:
             ball -= 1 # Иначе минус балл
 
+    #функция вывода текста на  текста на кнопку, и не только, куда угодно
     def print_text(self, window, message, x, y, font_color=(0, 0, 0), font_type="impact.ttf", font_size=20):
         font_type = pygame.font.Font(font_type, font_size)
         text = font_type.render(message, True, font_color)
         window.blit(text, (x, y - 5))
 
-    def printScore(self, window, message, x, y, font_color=(0, 0, 0), font_type="impact.ttf", font_size=20):
-        font_type = pygame.font.Font(font_type, font_size)
-        text = font_type.render(message, True, font_color)
-        window.blit(text, (x, y - 5))
-
+    #функция прорисовки кнопки
     def drawButton(self, window, message, x, y, action1=None, action2=None, action3=None, font_size=30):
         global currentLableButton, nextLabelFlag, ball, answer
         mouse = pygame.mouse.get_pos()  # позиция мышки
-        click = pygame.mouse.get_pressed()
+        click = pygame.mouse.get_pressed()#Щелчок ЛКМ
         if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:  # Проверка находится ли укзатель в поределах кнопкиесли находится, то прорисовываем новый прямоугольник, только другим цвето
-            pygame.draw.rect(window, self.active_color, (x, y, self.width, self.height))
+            pygame.draw.rect(window, self.active_color, (x, y, self.width, self.height))#Отрисовкапрямоугольника, в качестве кнопки
             # если нажать на кнопку, когда указатель мыши входит в кнопку, то проверится на правильность и перегрузит картинки и варианты
-            if click[0] == 1:
-                action3(message)
-                action1()
-                action2()
+            if click[0] == 1:#Если ЛКМ нажата в пределах кнопки, то выполнить дефствия
+                action3(message)#Проверка на верность
+                action1()   #Смена катринки
+                action2()   #Смена текста на кнопках
                 pygame.time.delay(200)# 200мс ожидание
         else:
-            pygame.draw.rect(window, self.unactive_color, (x, y, self.width, self.height))
-        self.print_text(window=window, message=message,
-                        x=x + 10, y=y + 10, font_size=font_size)
+            pygame.draw.rect(window, self.unactive_color, (x, y, self.width, self.height))#Отрисовкапрямоугольника, в качестве кнопки
+        self.print_text(window=window, message=message,x=x + 10, y=y + 10, font_size=font_size)#Вывод текста на кнопку

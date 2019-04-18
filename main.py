@@ -54,6 +54,6 @@ while controler.flag_game:
                                  y=heigWindow - 100, action1=images.next_picture, action2=labelButton.labelButtons,
                                  action3=centerDownButtons.proverka, font_size=22)
 
-    score.printScore(window, message=f'Баллы:{button.ball}', x=310, y=10, font_color=(0, 255, 255), font_size=35)
+    score.print_text(window, message=f'Баллы:{button.ball}', x=310, y=10, font_color=(0, 255, 255), font_size=35)
     pygame.display.flip()
 pygame.quit()
