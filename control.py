@@ -9,10 +9,10 @@ class Control:
 
     def control(self):
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == QUIT:#выход при нажатии на крестик
                 self.flag_game=False
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
+                if event.key == K_ESCAPE:#выход при нажатии на клавишу ESC
                     self.flag_game=False
 
                     
