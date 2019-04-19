@@ -39,8 +39,8 @@ class Button:
         global ball, answer
         if labBut == answer: #если нажата кнопка у которой надпись совбадает с именем картинки, то верно и + балл
             ball += 1
-        else:
-            ball -= 1 # Иначе минус балл
+        # else:
+        #     ball -= 1 # Иначе минус балл
 
     #функция вывода текста на  текста на кнопку, и не только, куда угодно
     def print_text(self, window, message, x, y, font_color=(0, 0, 0), font_type="impact.ttf", font_size=20):
@@ -53,9 +53,11 @@ class Button:
         global currentLableButton, nextLabelFlag, ball, answer
         mouse = pygame.mouse.get_pos()  # позиция мышки
         click = pygame.mouse.get_pressed()#Щелчок ЛКМ
+        # self.imgBut=pygame.image.load("butimg.png")
         if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:  # Проверка находится ли укзатель в поределах кнопкиесли находится, то прорисовываем новый прямоугольник, только другим цвето
             pygame.draw.rect(window, self.active_color, (x, y, self.width, self.height))#Отрисовкапрямоугольника, в качестве кнопки
-            # если нажать на кнопку, когда указатель мыши входит в кнопку, то проверится на правильность и перегрузит картинки и варианты
+            # self.rec
+            # если н1ажать на кнопку, когда указатель мыши входит в кнопку, то проверится на правильность и перегрузит картинки и варианты
             if click[0] == 1:#Если ЛКМ нажата в пределах кнопки, то выполнить дефствия
                 action3(message)#Проверка на верность
                 action1()   #Смена катринки
