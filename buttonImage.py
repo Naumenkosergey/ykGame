@@ -20,8 +20,13 @@ class ButtonImage:
 
     def clickStart(self):
         global menuhka, playgame
-        menuhka = False
-        playgame = True
+        if menuhka ==True:
+            playgame=True
+            menuhka=False
+        else:
+            playgame = False
+            menuhka = True
+
 
     def drawButtonImg(self, window, action1=None):
         global menuhka, playgame
