@@ -18,19 +18,19 @@ heigWindow = 750
 window = pygame.display.set_mode((widtWindow, heigWindow))
 pygame.display.set_caption("Угадай детальку")
 
-widthButt = 200
-heightBut = 40
+# widthButt = 200
+# heightBut = 40
 
 controler = Control()
-images = Gui()
-score = Button(widthButt, heightBut)
-labelButton = Button(10, 20)
-rightUpButtons = Button(widthButt, heightBut)
-leftUpButtons = Button(widthButt, heightBut)
-rightDownButtons = Button(widthButt, heightBut)
-leftDownButtons = Button(widthButt, heightBut)
-centerDownButtons = Button(widthButt * 2 + 20, heightBut)
-labelButton.labelButtons()
+# images = Gui()
+# score = Button(widthButt, heightBut)
+# labelButton = Button(10, 20)
+# rightUpButtons = Button(widthButt, heightBut)
+# leftUpButtons = Button(widthButt, heightBut)
+# rightDownButtons = Button(widthButt, heightBut)
+# leftDownButtons = Button(widthButt, heightBut)
+# centerDownButtons = Button(widthButt * 2 + 20, heightBut)
+# labelButton.labelButtons()
 meny=Menu()
 # menu.show_menu(window)
 while controler.flag_game:

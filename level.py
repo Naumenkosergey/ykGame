@@ -30,6 +30,9 @@ centerDownButtons = Button(widthButt * 2 + 20, heightBut)
 labelButton.labelButtons()
 
 def showLevel():
+    levelscreen = pygame.image.load("image/level.png")
+    levelscreen = pygame.transform.scale(levelscreen, (1300, 750))
+    window.blit(levelscreen, (0, 0))
     BLabel1 = currentLableButton[0]
     BLabel2 = currentLableButton[1]
     BLabel3 = currentLableButton[2]
