@@ -38,7 +38,6 @@ while controler.flag_game:
 
     controler.control()
     # window.fill(pygame.Color("Black"))
-    print(buttonImage.menuhka)
     meny.show_menu(window)
     if buttonImage.menuhka==False:
         level.showLevel()

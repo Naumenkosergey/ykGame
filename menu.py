@@ -19,7 +19,7 @@ class Menu:
         startgame = ButtonImage(850, 150, 300, 103, play)
         storBut = ButtonImage(850, 250, 300, 103, stor)
         window.blit(self.backgraund, (0, 0))
-        startgame.drawButtonImg(window,action1=startgame.clickStart)
+        startgame.drawButtonImg(window,action1=startgame.clickStart,action2=startgame.labelButtons)
         storBut.drawButtonImg(window)
 
     def show_menu(self, window):
