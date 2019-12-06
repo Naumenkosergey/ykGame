@@ -3,10 +3,12 @@ from control import Control
 from button import Button
 from buttonImage import ButtonImage
 import buttonImage
+from victory import *
 
 
 
 class Menu:
+    images = Gui()
 
     def __init__(self):
         self.backgraund = pygame.image.load("image/screen.png")
@@ -20,11 +22,10 @@ class Menu:
         storBut = ButtonImage(850, 250, 300, 103, stor)
         window.blit(self.backgraund, (0, 0))
         startgame.drawButtonImg(window,action1=startgame.clickStart,action2=startgame.labelButtons)
-        storBut.drawButtonImg(window)
+        # storBut.drawButtonImg(window,action1=showVictory)
 
     def show_menu(self, window):
         if buttonImage.menuhka==True:
             self.draw_menu(window)
         else:
             window.fill(pygame.Color("Black"))
-        print (buttonImage.menuhka)

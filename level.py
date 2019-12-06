@@ -8,7 +8,7 @@ import buttonImage
 from text import Text
 
 pygame.init()
-widtWindow = 1333
+widtWindow = 1300
 heigWindow = 750
 window = pygame.display.set_mode((widtWindow, heigWindow))
 pygame.display.set_caption("Угадай детальку")
@@ -21,8 +21,6 @@ images = Gui()
 score = Text((0, 255, 255),"impact.ttf",50)
 
 def showLevel():
-    print(currentLableButton)
-    # while buttonImage.menuhka==False:
     path = "image/"
     but1 = path + "but1.png"
     but2 = path + "but2.png"
@@ -30,7 +28,7 @@ def showLevel():
     almaz = path + "almaz.png"
     levelscreen = pygame.image.load("image/level.png")
     almaz = pygame.image.load(almaz)
-    levelscreen = pygame.transform.scale(levelscreen, (1300, 750))
+    levelscreen = pygame.transform.scale(levelscreen, (1333, 750))
 
 
     BLabel1 = currentLableButton[0]
@@ -49,16 +47,16 @@ def showLevel():
     backBut = ButtonImage(50, 100, 150, 98, back)
     nextPic=ButtonImage(100,660,600,100, but1)
 
-    firstButton.drawButtonImg(window, text=BLabel1, font_size=50, action1=images.next_picture,
+    firstButton.drawButtonImg(window, text=BLabel1, font_size=30, action1=images.next_picture,
                               action2=firstButton.labelButtons,action3=firstButton.proverka)
-    secondbutton.drawButtonImg(window, text=BLabel2, font_size=50, action1=images.next_picture,
+    secondbutton.drawButtonImg(window, text=BLabel2, font_size=30, action1=images.next_picture,
                                action2=secondbutton.labelButtons,action3=secondbutton.proverka)
-    threeBotton.drawButtonImg(window, text=BLabel3, font_size=50, action1=images.next_picture,
+    threeBotton.drawButtonImg(window, text=BLabel3, font_size=30, action1=images.next_picture,
                               action2=threeBotton.labelButtons,action3=threeBotton.proverka)
-    fourButton.drawButtonImg(window, text=BLabel4, font_size=50, action1=images.next_picture,
+    fourButton.drawButtonImg(window, text=BLabel4, font_size=30, action1=images.next_picture,
                              action2=fourButton.labelButtons,action3=fourButton.proverka)
     backBut.drawButtonImg(window, action1=backBut.clickStart)
     nextPic.drawButtonImg(window, text=nextPicture, font_size=30, action1=images.next_picture,
-                             action2=nextPic.labelButtons)
+                             action2=nextPic.labelButtons, action3=fourButton.proverka)
     images.draw_img(window, 150, 350)
     score.print_text(window,str(buttonImage.ball),1000,45)

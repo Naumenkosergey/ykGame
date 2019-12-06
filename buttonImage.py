@@ -2,14 +2,17 @@ import pygame
 import random
 import os
 import game
+import victory
 
 menuhka = True
 playgame = False
+victory = False
 
 currentLableButton = ["1", "2", "3", "4"]  # список для вариантов ответов на кнопки
 labelButtons = []  # Список со всеми возможными вариантами ответов
 ball = 0  # перемменная, считает правильные ответы
 answer = ""  # Переменная, которая содержит правильный ответ
+queshion = 0
 
 
 class ButtonImage:
@@ -29,13 +32,13 @@ class ButtonImage:
         window.blit(self.buttonimg, (self.x, self.y))
 
     def clickStart(self):
-        global menuhka, playgame
+        global menuhka, playgame, victory
         if menuhka == True:
             playgame = True
             menuhka = False
         else:
-            playgame = False
             menuhka = True
+            playgame = False
 
     def labelButtons(self):  # Метод(функция) смены вариантов ответа
         global nextLabelFlag, currentLableButton, labelButtons, namePict, answer
@@ -44,23 +47,36 @@ class ButtonImage:
         path = "picturies"
         labelButtons = [i for i in os.listdir(path)]  # создаем список файлов из полных имен картинки с расширенниями
         labelButtons = ''.join(labelButtons)  # Преобразование списка в строчку
-        labelButtons = labelButtons.split(".jpg")  # разделяем строку на элементы, относительно .jpg, т.е убираем .jpg
+        labelButtons = labelButtons.split(".png")  # разделяем строку на элементы, относительно .jpg, т.е убираем .jpg
         labelButtons.pop()  # Удаляем последний элемент, иак как он пустой
 
         a = labelButtons.copy()  # Переносим копию нашего списка в новый список a
         answer = game.namePict  # Ответ равен имени картинки
-        while answer not in currentLableButton:  # наполняем список для кнопок, пока не будет в нем правильного ответа
+        while True:
+            # наполняем список для кнопок, пока не будет в нем правильного ответа
             for i in range(4):
-                currentLableButton[i] = a.pop(
-                    random.randint(0, len(a) - 1))  # Наполнение списка надписей на кнопки аозможными вариантами
+                # currentLableButton[i] = a.pop(random.randint(0,len(a)-1))  # Наполнение списка надписей на кнопки возможными вариантами
+                currentLableButton[i] = random.choice(a)
+            # print(answer, currentLableButton)
+
+            if answer in currentLableButton:
+                break
 
     def proverka(self, labBut):  # Функция проверки на правильность ответа
-        global ball, answer
+        global ball, answer, victory, queshion
         if labBut == answer:  # если нажата кнопка у которой надпись совбадает с именем картинки, то верно и + балл
             ball += 1
+        else:
+            ball -= 1
+        if ball == 10:
+            victory = True
+        queshion += 1
+        # print(queshion)
 
-    def drawButtonImg(self, window, text=None, action1=None, action2=None, action3=None, font_size=None):
-        global menuhka, playgame
+
+
+    def drawButtonImg(self, window, text=None, action1=None, action2=None, action3=None, action4=None, font_size=None):
+        global menuhka, playgame, victory
         # global currentLableButton, nextLabelFlag, ball, answer
         mouse = pygame.mouse.get_pos()  # позиция мышки
         click = pygame.mouse.get_pressed()  # Щелчок ЛКМ
@@ -71,6 +87,8 @@ class ButtonImage:
             # self.rec
             # если н1ажать на кнопку, когда указатель мыши входит в кнопку, то проверится на правильность и перегрузит картинки и варианты
             if click[0] == 1:
+                # self.y+=10
+                # self.showButtonImg(window)
                 if action1 != None and action2 != None and action3 != None:
                     action3(text)
                     action1()
@@ -78,10 +96,12 @@ class ButtonImage:
                 elif action1 != None and action2 != None and action3 == None:
                     action1()
                     action2()
-                elif action1 != None and action2 == None and action3 == None:
+                elif action1 != None and action2 == None and action3 == None and action4 != None:
                     action1()
-                    # print (menuhka)
-                # print(currentLableButton)
+                elif action1 != None and action2 == None and action4 != None:
+                    action1()
+                    action2()
+                    action4()
                 pygame.time.delay(200)  # 200мс ожидание
         if text != None:
             self.print_text(window=window, message=text, x=self.x + 30, y=self.y + 20, font_size=font_size)

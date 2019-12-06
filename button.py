@@ -26,7 +26,7 @@ class Button:
         path = "picturies"
         labelButtons = [i for i in os.listdir(path)]#создаем список файлов из полных имен картинки с расширенниями
         labelButtons = ''.join(labelButtons)   #Преобразование списка в строчку
-        labelButtons = labelButtons.split(".jpg") #разделяем строку на элементы, относительно .jpg, т.е убираем .jpg
+        labelButtons = labelButtons.split(".png") #разделяем строку на элементы, относительно .jpg, т.е убираем .jpg
         labelButtons.pop()  #Удаляем последний элемент, иак как он пустой
 
         a = labelButtons.copy() #Переносим копию нашего списка в новый список a
@@ -39,8 +39,6 @@ class Button:
         global ball, answer
         if labBut == answer: #если нажата кнопка у которой надпись совбадает с именем картинки, то верно и + балл
             ball += 1
-        # else:
-        #     ball -= 1 # Иначе минус балл
 
     #функция вывода текста на  текста на кнопку, и не только, куда угодно
     def print_text(self, window, message, x, y, font_color=(0, 0, 0), font_type="impact.ttf", font_size=20):
@@ -56,7 +54,6 @@ class Button:
         # self.imgBut=pygame.image.load("butimg.png")
         if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:  # Проверка находится ли укзатель в поределах кнопкиесли находится, то прорисовываем новый прямоугольник, только другим цвето
             pygame.draw.rect(window, self.active_color, (x, y, self.width, self.height))#Отрисовкапрямоугольника, в качестве кнопки
-            # self.rec
             # если н1ажать на кнопку, когда указатель мыши входит в кнопку, то проверится на правильность и перегрузит картинки и варианты
             if click[0] == 1:#Если ЛКМ нажата в пределах кнопки, то выполнить дефствия
                 action3(message)#Проверка на верность
